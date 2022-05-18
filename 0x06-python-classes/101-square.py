@@ -81,4 +81,4 @@ class Square:
                 for harsh in range(self.size):
                     string = string + '#'
                 string = string + '\n'
-        return string
+        return string[:-1]
