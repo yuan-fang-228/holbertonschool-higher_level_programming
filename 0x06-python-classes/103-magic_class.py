@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """define a MagicClass with 3 functions"""
-
-
 import math
+
+
 class MagicClass:
     """represent a circle"""
     def __init__(self, radius=0):
