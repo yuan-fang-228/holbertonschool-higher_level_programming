@@ -11,7 +11,10 @@ def matrix_divided(matrix, div):
         result to be rounded to 2 decimal places
         put results in a new matrix and return the new matrix"""
 
-    if type(matrix) is not list or len(matrix) == 0 or len(matrix[0]) == 0:
+    if type(matrix) is not list or len(matrix) == 0:
+        raise TypeError("matrix must be a matrix (list of lists) "
+                        "of integers/floats")
+    if type(matrix[0]) is not list:
         raise TypeError("matrix must be a matrix (list of lists) "
                         "of integers/floats")
     if type(div) is not int and type(div) is not float:
