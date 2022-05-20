@@ -1,0 +1,81 @@
+The ``0-add_integer`` module
+============================
+
+Using ``add_integer(a, b=98)``
+------------------------------
+
+
+Import the function that need to test:
+        >>> add_integer = __import__('0-add_integer').add_integer
+
+Now use it:
+        >>> add_integer(1, 2)
+        3
+
+	>>> add_integer(-9, -2)
+	-11
+
+	>>> add_integer(9, 10.9)
+	19
+
+	>>> add_integer(9, -10.9)
+	-1
+
+	>>> add_integer(2.5, 2.5)
+	4
+
+	>>> add_integer(2)
+	100
+
+	>>> add_integer()
+	Traceback (most recent call last):
+	...
+	TypeError: add_integer() missing 1 required positional argument: 'a'
+	
+	>>> add_integer(1e3, -1e3)
+	0
+
+	>>> add_integer(2e400, 2e400)
+	Traceback (most recent call last):
+	...	
+	OverflowError: cannot convert float infinity to integer
+
+	>>> add_integer("Hello", "World")
+	Traceback (most recent call last):
+	...
+	TypeError: a must be an integer
+
+	>>> add_integer(1, "Hello")
+	Traceback (most recent call last):
+	...
+	TypeError: b must be an integer
+
+	>>> add_integer("Hello", 1)
+	Traceback (most recent call last):
+	...
+	TypeError: a must be an integer
+	
+	>>> add_integer(1, 2, 3)
+	Traceback (most recent call last):
+	...
+	TypeError: add_integer() takes from 1 to 2 positional arguments but 3 were given
+
+	>>> add_integer(3, None)
+	Traceback (most recent call last):
+	...
+	TypeError: b must be an integer
+
+	>>> add_integer(None)
+	Traceback (most recent call last):
+	...
+	TypeError: a must be an integer
+
+	>>> add_integer(1, float('nan'))
+	Traceback (most recent call last):
+	...
+	ValueError: cannot convert float NaN to integer
+
+	>>> add_integer(1, float('inf'))
+	Traceback (most recent call last):
+	...
+	OverflowError: cannot convert float infinity to integer
