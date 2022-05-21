@@ -4,9 +4,9 @@ The ``2-matrix_divided`` module
 Using ``matrix_divided(matrix, div)``
 -------------------------------------
 
+
 Import the function that need to test:
 	>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
-
 
 Now use it:
 	>>> matrix_divided([[]], 3)
