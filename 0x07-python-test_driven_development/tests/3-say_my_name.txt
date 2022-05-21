@@ -7,6 +7,7 @@ Using ``say_my_name(first_name, last_name="")``
 Import the function that need to test:
 	>>> say_my_name = __import__('3-say_my_name').say_my_name
 
+
 Now use it:
 
 	>>> say_my_name("John", "Smith")
