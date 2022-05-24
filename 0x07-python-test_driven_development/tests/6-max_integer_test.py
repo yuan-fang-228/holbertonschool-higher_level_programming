@@ -4,12 +4,15 @@
 import unittest
 max_integer = __import__('6-max_integer').max_integer
 
+
 class TestMaxInteger(unittest.TestCase):
 
     def test_positive_list(self):
         """test positive integer list"""
         testList = [3, 5, 7, 1, 4]
         self.assertEqual(max_integer(testList), 7)
+
+    def test_negative_list(self):
         """test negative integer list"""
         testList = [-3, -5, -7, -1, -4]
         self.assertEqual(max_integer(testList), -1)
@@ -22,7 +25,7 @@ class TestMaxInteger(unittest.TestCase):
     def test_infinity_list(self):
         """test the infinity number in the list"""
         testList = [1, 5, 6574, 4352, 324, float('inf')]
-        self.assertEqual(max_integer(testList),float('inf'))
+        self.assertEqual(max_integer(testList), float('inf'))
 
     def test_two_same_max_integer(self):
         """test the two same max integer in the list"""
@@ -38,6 +41,7 @@ class TestMaxInteger(unittest.TestCase):
         """test empty list"""
         testList = []
         self.assertEqual(max_integer(testList), None)
+
     def test_number_string(self):
         testList = "123456789"
         with self.assertRaises(TypeError):
@@ -84,6 +88,7 @@ class TestMaxInteger(unittest.TestCase):
         testList = {1, 34, 67, 80}
         with self.assertRaises(TypeError):
             max_integer(testList)
+
 
 if __name__ == "__main__":
     unittest.main()
