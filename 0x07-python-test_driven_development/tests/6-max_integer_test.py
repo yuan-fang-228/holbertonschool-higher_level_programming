@@ -44,14 +44,12 @@ class TestMaxInteger(unittest.TestCase):
 
     def test_number_string(self):
         testList = "123456789"
-        with self.assertRaises(TypeError):
-            max_integer(testList)
+        self.assertEqual(max_integer(testList), "9")
 
     def test_none_list(self):
         """test if test list is None"""
         testList = [None]
-        with self.assertRaises(TypeError):
-            max_integer(testList)
+        self.assertEqual(max_integer(testList), None)
 
     def test_none(self):
         """test if nothing type in"""
@@ -62,20 +60,17 @@ class TestMaxInteger(unittest.TestCase):
     def test_float_list(self):
         """test the float list"""
         testList = [23.45, 234.56, 234.1, 123.4]
-        with self.assertRaises(TypeError):
-            max_integer(testList)
+        self.assertEqual(max_integer(testList), 234.56)
 
     def test_int_float_list(self):
         """test if there float and int in the list"""
         testList = [12, 234.5, 23, 456.6]
-        with self.assertRaises(TypeError):
-            max_integer(testList)
+        self.assertEqual(max_integer(testList), 456.6)
 
     def test_all_string_list(self):
         """test if all the elements are string in the list"""
         testList = ["zc", "zd", "c", "A"]
-        with self.assertRaises(TypeError):
-            max_integer(testList)
+        self.assertEqual(max_integer(testList), "zd")
 
     def test_string_list(self):
         """test the string list will raise a typeerror exception"""
