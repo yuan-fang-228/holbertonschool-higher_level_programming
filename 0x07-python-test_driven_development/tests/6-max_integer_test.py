@@ -17,6 +17,16 @@ class TestMaxInteger(unittest.TestCase):
         testList = [-3, -5, -7, -1, -4]
         self.assertEqual(max_integer(testList), -1)
 
+    def test_max_at_head(self):
+        """test if max number is at beginnng of the list"""
+        testList = [8, 8, 8, 7, 2]
+        self.assertEqual(max_integer(testList), 8)
+
+    def test_same_number_list(self):
+        """test if all the numbers in the list are the same"""
+        testList = [6, 6, 6, 6]
+        self.assertEqual(max_integer(testList), 6)
+
     def test_mix_positive_negative_list(self):
         """test mix of negative and positive integer list"""
         testList = [1, 99999, 10382, -2319482, 930847399873]
@@ -50,6 +60,11 @@ class TestMaxInteger(unittest.TestCase):
         """test if test list is None"""
         testList = [None]
         self.assertEqual(max_integer(testList), None)
+
+    def test_dict(self):
+        """test if it is a dictionary"""
+        testList = [{1, 2}, {3, 4, 5}]
+        self.assertEqual(max_integer(testList), {1, 2})
 
     def test_none(self):
         """test if nothing type in"""
