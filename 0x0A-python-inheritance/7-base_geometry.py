@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""7-base_geometry Module"""
+
+
 class BaseGeometry:
     def area(self):
         """raise an exception with message
