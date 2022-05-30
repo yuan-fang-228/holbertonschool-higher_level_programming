@@ -7,6 +7,20 @@ Using ``MyList``
 Import class:
 	>>> MyList = __import__('1-my_list').MyList
 
+Check docstring:
+
+	>>> mod = __import__("1-my_list").__doc__
+	>>> len(mod) > 1
+	True
+
+	>>> class = __import__("1-my_list").MyList.__doc__
+	>>> len(class) > 1
+	True
+
+	>>> method = __import__("1-my_list").MyList.print_sorted.__doc__
+	>>> len(method) > 1
+	True
+
 Now use it:
 	>>> my_list = MyList()
 	>>> my_list.append(1)
@@ -35,6 +49,10 @@ Now use it:
 	>>> my_list.print_sorted()
 	['B', 'a', 'c']
 
+	>>> my_list = MyList(["hello", "Wrold"])
+	>>> my_list.print_sorted()
+	['World', 'hello']
+
 	>>> my_list = MyList([5, 5, 3, 5, 1, 2])
 	>>> my_list.print_sorted()
 	[1, 2, 3, 5, 5, 5]
@@ -46,3 +64,8 @@ Now use it:
 	>>> my_list = MyList([9999999999999])
 	>>> my_list.print_sorted()
 	[9999999999999]
+
+	>>>my_list.print_sorted([1, 2, 3])
+	Traceback (most recent call last):
+        ...
+	TypeError: print_sorted() takes 1 positional argument but 2 were given
