@@ -4,8 +4,6 @@
 
 def pascal_triangle(n):
     """return a list of lists of integers representing Pascal's triangle"""
-    if n < 0:
-        return []
     array = [[1]]
     if n == 1:
         return array
