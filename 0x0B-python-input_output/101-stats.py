@@ -32,14 +32,17 @@ if __name__ == "__main__":
             token = lines.split()
             try:
                 file_size = file_size + int(token[-1])
-            except TypeError:
+            except IndexError, ValueError:
                 pass
             key = token[-2]
-            if key in stats_size:
-                stats_size[key] += 1
-            line_count = line_count + 1
-            if line_count % 10 == 0:
-                print_stats(stats_size, file_size)
+            try:
+                if key in stats_size:
+                    stats_size[key] += 1
+                line_count = line_count + 1
+                if line_count % 10 == 0:
+                    print_stats(stats_size, file_size)
+            except IndexError:
+                pass
     except KeyboardInterrupt:
         print_stats(stats_size, file_size)
         raise
