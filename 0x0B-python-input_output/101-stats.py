@@ -30,7 +30,10 @@ if __name__ == "__main__":
     try:
         for lines in sys.stdin:
             token = lines.split()
-            file_size = file_size + int(token[-1])
+            try:
+                file_size = file_size + int(token[-1])
+            except TypeError:
+                pass
             key = token[-2]
             if key in stats_size:
                 stats_size[key] += 1
