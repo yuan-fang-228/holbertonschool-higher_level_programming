@@ -15,14 +15,14 @@ def print_stats(stats_size, size):
 if __name__ == "__main__":
 
     stats_size = {
-        200: 0,
-        301: 0,
-        400: 0,
-        401: 0,
-        403: 0,
-        404: 0,
-        405: 0,
-        500: 0
+        "200": 0,
+        "301": 0,
+        "400": 0,
+        "401": 0,
+        "403": 0,
+        "404": 0,
+        "405": 0,
+        "500": 0
     }
     file_size = 0
     line_count = 0
@@ -30,15 +30,13 @@ if __name__ == "__main__":
     try:
         for lines in sys.stdin:
             token = lines.split()
-            if type(token[-1]) is int:
-                file_size = file_size + int(token[-1])
-                if type(token[-2]) is int:
-                    key = int(token[-2])
-                    if key in stats_size:
-                        stats_size[key] += 1
-                    line_count = line_count + 1
-                    if line_count % 10 == 0:
-                        print_stats(stats_size, file_size)
+            file_size = file_size + int(token[-1])
+            key = int(token[-2])
+            if key in stats_size:
+                stats_size[key] += 1
+            line_count = line_count + 1
+            if line_count % 10 == 0:
+                print_stats(stats_size, file_size)
     except KeyboardInterrupt:
         print_stats(stats_size, file_size)
         raise
