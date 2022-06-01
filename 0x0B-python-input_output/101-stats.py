@@ -31,7 +31,7 @@ if __name__ == "__main__":
         for lines in sys.stdin:
             token = lines.split()
             file_size = file_size + int(token[-1])
-            key = int(token[-2])
+            key = str(token[-2])
             if key in stats_size:
                 stats_size[key] += 1
             line_count = line_count + 1
