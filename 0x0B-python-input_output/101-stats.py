@@ -8,7 +8,8 @@ import sys
 def print_stats(stats_size, size):
     print(f"File size: {size}")
     for key in sorted(stats_size):
-        print(f"{key}: {stats_size[key]}")
+        if stats_size[key]:
+            print(f"{key}: {stats_size[key]}")
 
 
 if __name__ == "__main__":
