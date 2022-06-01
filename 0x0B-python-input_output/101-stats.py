@@ -30,13 +30,13 @@ if __name__ == "__main__":
     try:
         for lines in sys.stdin:
             token = lines.split()
-        file_size = file_size + int(token[-1])
-        key = token[-2]
-        if key in stats_size:
-            stats_size[key] += 1
-        line_count = line_count + 1
-        if line_count % 10 == 0:
-            print_stats(stats_size, file_size)
+            file_size = file_size + int(token[-1])
+            key = token[-2]
+            if key in stats_size:
+                stats_size[key] += 1
+            line_count = line_count + 1
+            if line_count % 10 == 0:
+                print_stats(stats_size, file_size)
     except KeyboardInterrupt:
         print_stats(stats_size, file_size)
         raise
