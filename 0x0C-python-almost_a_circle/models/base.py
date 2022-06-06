@@ -22,7 +22,7 @@ class Base:
     def to_json_string(list_dictionaries):
         """return JSON string representation of list_dic"""
         if list_dictionaries is None or list_dictionaries == []:
-            return []
+            return "[]"
         return json.dumps(list_dictionaries)
 
     @classmethod
@@ -33,7 +33,8 @@ class Base:
             newObj = []
         else:
             for obj in list_objs:
-                newObj.append(cls.to_dictionary(obj))
+                if isinstance(obj, Base):
+                    newObj.append(cls.to_dictionary(obj))
         filename = cls.__name__ + ".json"
         with open(filename, "w", encoding="utf-8") as myfile:
             myfile.write(cls.to_json_string(newObj))
