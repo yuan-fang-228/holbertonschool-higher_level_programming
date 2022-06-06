@@ -70,3 +70,38 @@ class Base:
                 return result
         except Exception:
             return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """serialiation - convert it to csv string and save in the file"""
+        filename = cls.__name__ + ".csv"
+        with open(filename, "w", newline="") as csvfile:
+            if list_objs is None or len(list_objs) == 0:
+                csvfile.write("[]")
+            else:
+                if cls.__name__ == "Rectangle":
+                    attributename = ["id", "width", "height", "x", "y"]
+                if cls.__name__ == "Square":
+                    attributename = ["id", "size", "x", "y"]
+                writer = csv.DictWriter(csvfile, fieldnames=attributename)
+                for obj in list_objs:
+                    writer.writerow(obj.to_dictionary())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """deserialiation - load a list of object from csv file"""
+        filename = cls.__name__ + ".csv"
+        list_objs = []
+        try:
+            with open(filename, "r", newline="") as csvfile:
+                if cls.__name__ == "Rectangle":
+                    attributename = ["id", "width", "height", "x", "y"]
+                if cls.__name__ == "Square":
+                    attributename = ["id", "size", "x", "y"]
+                dictreader = csv.DictReader(csvfile, fieldnames=attributename)
+                for item in dictreader:
+                    item = {k: int(v) for k, v in item.items()}
+                    list_objs.append(cls.create(**item))
+                return list_objs
+        except Exception:
+            return list_objs
