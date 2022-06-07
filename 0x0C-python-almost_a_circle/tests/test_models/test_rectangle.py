@@ -125,6 +125,26 @@ class TestRectangle_display(unittest.TestCase):
         printoutstring = f.getvalue()
         displaystring = "####\n####\n####\n####\n####\n####\n"
         self.assertEqual(printoutstring, displaystring)
+        f1 = io.StringIO()
+        with redirect_stdout(f1):
+            r2 = Rectangle(2, 3, 2, 2)
+            r2.display()
+        printoutstring = f1.getvalue()
+        displaystring = "\n\n  ##\n  ##\n  ##\n"
+        self.assertEqual(printoutstring, displaystring)
+        f2 = io.StringIO()
+        with redirect_stdout(f2):
+            r3 = Rectangle(3, 2, 1, 0)
+            r3.display()
+        printoutstring = f2.getvalue()
+        displaystring = " ###\n ###\n"
+        self.assertEqual(printoutstring, displaystring)
+
+    def test_display_wrong_args(self):
+        """test wrong arguement"""
+        with self.assertRaises(TypeError):
+            r4 = Rectangle(1, 1, 3, 4)
+            r4.display("r4")
 
 
 class TestRectangle_w(unittest.TestCase):
