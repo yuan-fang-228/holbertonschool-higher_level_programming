@@ -98,6 +98,18 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(TypeError):
             r = Rectangle()
 
+    def test_private_attribute(self):
+        """test private attribute is accessable from outside the class"""
+        r_1 = Rectangle(1, 2, 3, 4, 5)
+        with self.assertRaises(AttributeError):
+            print(r_1.__width)
+        with self.assertRaises(AttributeError):
+            print(r_1.__height)
+        with self.assertRaises(AttributeError):
+            print(r_1.__x)
+        with self.assertRaises(AttributeError):
+            print(r_1.__y)
+
 
 class TestRectangle_w(unittest.TestCase):
     """ Unit tests for Rectangle width attribute """
@@ -357,3 +369,25 @@ class TestRectangle_update(unittest.TestCase):
         rec = Rectangle(1, 2, 3, 4, 5)
         rec.update(None, 9, 8, 7, 6)
         self.assertEqual("[Rectangle] (None) 7/6 - 9/8", str(rec))
+
+
+class TestRectangle_to_dictionary(unittest.TestCase):
+    """test to dictionary method"""
+
+    def test_normal_args(self):
+        """test noraml arguments passed in for this method"""
+        r_1 = Rectangle(1, 2, 3, 4, 5)
+        r_1_to_dictionary = {"id": 5, "width": 1, "height": 2, "x": 3, "y": 4}
+        self.assertEqual(r_1.to_dictionary(), r_1_to_dictionary)
+        r_2 = Rectangle(5, 4, 3, 2, 1)
+        r_2.update(**r_1_to_dictionary)
+        r_2_to_dictionary = r_2.to_dictionary()
+        self.assertEqual(r_1_to_dictionary, r_2_to_dictionary)
+        self.assertEqual(dict, type(r_2_to_dictionary))
+
+    def test_wrong_args(self):
+        """test if having the wrong arguments"""
+        r_1 = Rectangle(2, 2, 2, 2, 2)
+        errmsg = 'to_dictionary() takes 1 positional argument but 2 were given'
+        with self.assertRaises(TypeError):
+            r_1_dictionary = r_1.to_dictionary({"id": 1, "x": 1, "y": 1})

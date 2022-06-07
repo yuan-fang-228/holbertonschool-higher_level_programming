@@ -66,6 +66,12 @@ class TestBase(unittest.TestCase):
         b_1 = Square(5)
         self.assertEqual(b_1.id, 1)
 
+    def test_everything_is_none(self):
+        """test nothing passed in"""
+        Base._Base__nb_objects = 0
+        b_4 = Base()
+        self.assertEqual(b_4.id, 1)
+
     def test_id_assigned(self):
         """ Tests id is give"""
         self.assertEqual(self.b_2.id, 8)
