@@ -10,6 +10,8 @@ Focus is on:
 import unittest
 import inspect
 import pycodestyle
+import io
+from contextlib import redirect_stdout
 
 from models.base import Base
 from models import rectangle
@@ -109,6 +111,20 @@ class TestRectangle(unittest.TestCase):
             print(r_1.__x)
         with self.assertRaises(AttributeError):
             print(r_1.__y)
+
+
+class TestRectangle_display(unittest.TestCase):
+    """test method of display"""
+
+    def test_display_normal(self):
+        """test display method with normal args"""
+        f = io.StringIO()
+        with redirect_stdout(f):
+            r1 = Rectangle(4, 6)
+            r1.display()
+        printoutstring = f.getvalue()
+        displaystring = "####\n####\n####\n####\n####\n####\n"
+        self.assertEqual(printoutstring, displaystring)
 
 
 class TestRectangle_w(unittest.TestCase):
