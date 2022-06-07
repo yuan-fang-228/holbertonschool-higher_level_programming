@@ -151,6 +151,7 @@ class TestStr(unittest.TestCase):
     """test __str__ method"""
 
     def test_str_normal(self):
+        """test for normal argument"""
         f = io.StringIO()
         with redirect_stdout(f):
             r1 = Rectangle(4, 6, 2, 1, 12)
@@ -168,9 +169,8 @@ class TestStr(unittest.TestCase):
         self.assertEqual(printstring2, stdoutstring2)
 
     def test_str_no_attribute(self):
-        errmsg = "__init__() missing 2 required positional "\
-            "arguments: 'width' and 'height'"
-        with self.assertRaiseRegex(TypeError, errmsg):
+        """test no attributes passed in"""
+        with self.assertRaises(TypeError):
             r = Rectangle()
 
 
