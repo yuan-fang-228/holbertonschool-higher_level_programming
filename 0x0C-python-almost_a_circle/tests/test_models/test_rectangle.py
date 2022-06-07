@@ -147,6 +147,33 @@ class TestRectangle_display(unittest.TestCase):
             r4.display("r4")
 
 
+class TestStr(unittest.TestCase):
+    """test __str__ method"""
+
+    def test_str_normal(self):
+        f = io.StringIO()
+        with redirect_stdout(f):
+            r1 = Rectangle(4, 6, 2, 1, 12)
+            print(r1)
+        printstring = f.getvalue()
+        stdoutstring = "[Rectangle] (12) 2/1 - 4/6\n"
+        self.assertEqual(printstring, stdoutstring)
+        f1 = io.StringIO()
+        with redirect_stdout(f1):
+            r2 = Rectangle(5, 5, 1)
+            r2.id = 1
+            print(r2)
+        printstring2 = f1.getvalue()
+        stdoutstring2 = "[Rectangle] (1) 1/0 - 5/5\n"
+        self.assertEqual(printstring2, stdoutstring2)
+
+    def test_str_no_attribute(self):
+        errmsg = "__init__() missing 2 required positional "\
+            "arguments: 'width' and 'height'"
+        with self.assertRaiseRegex(TypeError, errmsg):
+            r = Rectangle()
+
+
 class TestRectangle_w(unittest.TestCase):
     """ Unit tests for Rectangle width attribute """
 
