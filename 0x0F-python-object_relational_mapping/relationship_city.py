@@ -2,7 +2,7 @@
 """define a city class and link to a database"""
 from sqlalchemy import Column, Integer, String
 from sqlalchemy import ForeignKey
-from relationship_state import State
+from relationship_state import State, Base
 
 
 class City(Base):
