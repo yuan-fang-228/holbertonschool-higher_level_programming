@@ -5,11 +5,14 @@ import sys
 
 
 if __name__ == "__main__":
-    value = {'q': sys.argv[1]}
+    letter = ""
+    if len(sys.argv) == 1:
+        letter = sys.argv[1]
+    value = {'q': letter}
     p = requests.post('http://0.0.0.0:5000/search_user', data=value)
     try:
         if p.json():
-            print('[{}] {}'.format(p.json.get('id'), p.json.get('name')))
+            print('[{}] {}'.format(p.json().get('id'), p.json().get('name')))
         else:
             print("No result")
     except ValueError:
